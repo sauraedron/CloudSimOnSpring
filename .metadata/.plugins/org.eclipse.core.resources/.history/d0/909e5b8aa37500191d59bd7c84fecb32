@@ -1,0 +1,29 @@
+package com.abac.cloudsim;
+
+public class VMConfigurationHolder {
+    int position;
+	int pe;
+	int BandWidth;
+	int Storage;
+	int cloudletId;
+	int cloudletLength;
+	int fileSize;
+	int outputsize;
+	int user = 1;
+	int mips;
+	
+	public VMConfigurationHolder(int pe, int bw, int storage, int clId, int clLen, int fileSize, int outpSize, int owner, int million_inst_ps)
+	{
+		this.mips = million_inst_ps;
+		user = owner;
+        this.position=-1;
+		this.pe = pe;
+		this.BandWidth = bw;
+		this.Storage = storage;
+		this.cloudletId=clId;
+		this.cloudletLength = clLen;
+		this.fileSize = fileSize;
+		this.outputsize = outpSize;
+	}
+
+}

@@ -1,0 +1,15 @@
+package RequestStructures;
+
+public class VMRequest {
+	public int processors;
+	public long bandwidth;
+	public long storage;
+	public VMRequest(int processors, long bandwidth, long storage) {
+		super();
+		this.processors = processors;
+		this.bandwidth = bandwidth;
+		this.storage = storage;
+	}
+	
+
+}

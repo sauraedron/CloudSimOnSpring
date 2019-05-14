@@ -1,0 +1,42 @@
+package com.abac.cloudsim.API;
+
+import java.util.LinkedList;
+
+import com.abac.cloudsim.CloudletConfigurationHolder;
+import com.abac.cloudsim.ConfigurationContainer;
+import com.abac.cloudsim.VMConfigurationHolder;
+
+import RequestStructures.TaskStructure;
+
+import com.abac.cloudsim.ConfigurationContainer.ValueHolder;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@RestController
+public class TaskCreate {
+	
+	static int CloudletId=1;
+	@RequestMapping("/task/create")
+	public String getTaskId(@RequestBody TaskStructure req)
+	{
+		//Begin Cloudlet configurations
+		int cloudletId = CloudletId++;
+		int cloudletLength = req.taskLength	;
+		int cloudletPesNumber = req.processors;
+		int cloudletFileSize = req.fileSize;
+		int cloudletOutputSize = req.outputSize;
+		int vmId=req.vmIdToMap;
+		
+		//End CLoudlet Configurations
+		
+		CloudletConfigurationHolder cloudConfig = new CloudletConfigurationHolder(cloudletPesNumber, cloudletLength,cloudletFileSize, cloudletOutputSize, vmId);
+		ValueHolder.addCloudletConfiguration(cloudConfig);
+		
+		return Integer.toString(cloudletId);
+	}
+
+}

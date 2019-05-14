@@ -1,0 +1,47 @@
+package com.abac.cloudsim;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class ConfigurationContainer {
+	public static class DataCenter
+	{
+		int dataCenterMips;
+		int hostMemRam;
+		int  hostStorage;
+		int dcBw;
+		
+	}
+	public static class ValueHolder
+	{
+		static int num_users=1;
+		static int num_DataCenterCount=1;
+        static int vmCounter=0;
+
+        static int containerCounter=0;
+		public static List<VMConfigurationHolder> vmConfigurations;
+        public static List<CloudletConfigurationHolder> cloudletConfigurations;
+        public static void addVMConfiguration(VMConfigurationHolder v)
+        {
+            v.position=++vmCounter;
+            if(vmConfigurations==null)
+            {
+                vmConfigurations = new LinkedList<VMConfigurationHolder>();
+            }
+            vmConfigurations.add(v);
+            
+        }
+
+        public static void addCloudletConfiguration(CloudletConfigurationHolder v)
+        {
+            v.position = ++containerCounter;
+            if(cloudletConfigurations==null)
+            {
+                cloudletConfigurations = new LinkedList<CloudletConfigurationHolder>();
+            }
+            cloudletConfigurations.add(v);
+        }
+	}
+
+
+}

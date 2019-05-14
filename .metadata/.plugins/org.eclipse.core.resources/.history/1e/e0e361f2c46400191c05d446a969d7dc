@@ -1,0 +1,15 @@
+package com.abac.cloudsim;
+public class VMConfigurationHolder {
+    int position;
+	int pe;
+	int BandWidth;
+	int Storage;
+	public VMConfigurationHolder(int pe, int bw, int storage)
+	{
+        this.position=-1;
+		this.pe = pe;
+		this.BandWidth = bw;
+		this.Storage = storage;
+	}
+
+}

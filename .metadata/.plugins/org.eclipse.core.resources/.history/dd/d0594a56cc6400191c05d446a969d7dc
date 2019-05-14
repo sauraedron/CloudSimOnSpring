@@ -1,0 +1,6 @@
+package com.abac.cloudsim;
+
+@RestController
+public class Simulation {
+
+}

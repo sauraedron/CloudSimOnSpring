@@ -1,0 +1,28 @@
+package com.abac.cloudsim.API;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.abac.cloudsim.ConfigurationContainer;
+import com.abac.cloudsim.VMConfigurationHolder;
+
+@RestController
+public class ProcessorElements {
+	@RequestMapping("/resources/pe")
+	public long GetRemainingPe()
+	{
+		long processorsToBeUsed= 0;
+		if(ConfigurationContainer.ValueHolder.vmConfigurations!=null)
+		{
+			for(int i=0; i<ConfigurationContainer.ValueHolder.vmConfigurations.size(); i++)
+			{
+				VMConfigurationHolder config = ConfigurationContainer.ValueHolder.vmConfigurations.get(i);
+				processorsToBeUsed+=(config.getProcessingElements());
+			}
+		}	
+		
+		int dcPe = ConfigurationContainer.DataCenter.getProcessingElements();
+		return dcPe - processorsToBeUsed;
+	}
+
+}

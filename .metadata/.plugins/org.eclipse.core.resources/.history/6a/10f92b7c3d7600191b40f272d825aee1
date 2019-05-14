@@ -1,0 +1,66 @@
+package com.abac.cloudsim.API;
+import java.util.LinkedList;
+
+import com.abac.cloudsim.CloudletConfigurationHolder;
+import com.abac.cloudsim.ConfigurationContainer;
+import com.abac.cloudsim.VMConfigurationHolder;
+import com.abac.cloudsim.ConfigurationContainer.ValueHolder;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+
+@RestController
+public class VMAdd {
+	static int counter=1;
+	@RequestMapping("/vm/add")
+	@ResponseStatus(code=HttpStatus.OK)
+	public String getVMId()
+	{
+		//Begin VM Configurations
+		int vmbw = 1000;
+		int vmMips = 1000;
+		int vmPesNumber=1;
+		int vmRam=512;
+		int vmSize = 10000;
+		String Vmm="Xena";
+		//End VM Configurations
+		
+		
+		//To be commented once all is spearted
+		//Begin Cloudlet configurations
+		int cloudletId = counter*4;
+		int cloudletLength = 40000	;
+		int cloudletPesNumber = 1;
+		int cloudletFileSize = 300;
+		int cloudletOutputSize = 300;
+		
+		//End CLoudlet Configurations
+		
+
+		
+
+		int vmId=counter++;
+		CloudletConfigurationHolder cloudConfig = new CloudletConfigurationHolder(cloudletPesNumber, cloudletLength,cloudletFileSize, cloudletOutputSize, vmId);		
+		ValueHolder.addCloudletConfiguration(cloudConfig);
+		
+		VMConfigurationHolder req = new VMConfigurationHolder(vmbw,vmMips,vmPesNumber,vmRam,vmSize,Vmm, vmId);
+		ValueHolder.addVMConfiguration(req);
+		
+		//We are persisting values to an Static Member
+//		String g = new String();
+//		for(int i=0; i<ValueHolder.vmConfigurations.size(); i++)
+//		{
+//			VMConfigurationHolder h = ValueHolder.vmConfigurations.get(i);
+//			String tmp = Integer.toString(h.vmPesNumber)+ " "+Integer.toString(h.vmSize)+"<br>";
+//			g=g.concat(tmp);
+//		}
+		
+		
+		return Integer.toString(vmId);
+				
+	}
+
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.cloudbus.cloudsim.core.CloudSim"/>
+    <fullyQualifiedTypeName name="org.cloudbus.cloudsim.VmSchedulerSpaceShared"/>
+    <fullyQualifiedTypeName name="org.cloudbus.cloudsim.CloudletSchedulerTimeShared"/>
+    <fullyQualifiedTypeName name="org.cloudbus.cloudsim.Datacenter"/>
+    <fullyQualifiedTypeName name="com.abac.cloudsim.ConfigurationContainer.DataCenter"/>
+    <fullyQualifiedTypeName name="com.abac.cloudsim.ConfigurationContainer"/>
+    <fullyQualifiedTypeName name="com.abac.cloudsim.ConfigurationContainer.ValueHolder"/>
+    <fullyQualifiedTypeName name="com.abac.cloudsim.CloudletConfigurationHolder"/>
+    <fullyQualifiedTypeName name="com.abac.cloudsim.VMConfigurationHolder"/>
+    <fullyQualifiedTypeName name="org.cloudbus.cloudsim.lists.VmList"/>
+</qualifiedTypeNameHistroy>

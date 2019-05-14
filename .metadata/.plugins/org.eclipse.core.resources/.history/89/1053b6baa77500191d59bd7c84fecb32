@@ -1,0 +1,22 @@
+package com.abac.cloudsim;
+
+public class VMConfigurationHolder {
+	int mapToVm;
+	int vmMips;
+	int vmSize;
+	int vmRam;
+	long vmBw;
+	int vmPesNumber;
+	String vmm;
+	public VMConfigurationHolder(int bw, int mips,int pesNumber, int ram,int size,String vmm)
+	{
+		this.vmBw = bw;
+		this.vmMips = mips;
+		this.vmPesNumber = pesNumber;
+		this.vmm = vmm;
+		this.vmRam = ram;
+		this.vmSize  = size;
+		this.mapToVm= 1;
+	}
+
+}

@@ -1,0 +1,54 @@
+package com.abac.cloudsim;
+import java.util.LinkedList;
+
+import com.abac.cloudsim.ConfigurationContainer.ValueHolder;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@RestController
+public class VMAdd {
+	static int counter=1;
+	@RequestMapping("/vm/add")
+	public String sayHi()
+	{
+		//Begin VM Configurations
+		int pe = counter*1;
+		int vmbw = counter*2;
+		int storage = counter*3;
+		int vmMips = 1000;
+		int vmPesNumber=1;
+		int vmRam=512;
+		int vmSize = 10000;
+		String Vmm="Xen";
+		//End VM Configurations
+		
+		//Begin Cloudlet configurations
+		int cloudletId = counter*4;
+		int cloudletLength = 40000	;
+		int cloudletPesNumber = 1;
+		int cloudletFileSize = 300;
+		int cloudletOutputSize = 300;
+		
+		//End CLoudlet Configurations
+		VMConfigurationHolder req = new VMConfigurationHolder(vmbw,vmMips,vmPesNumber,vmRam,vmSize,Vmm);
+		CloudletConfigurationHolder cloudConfig = new CloudletConfigurationHolder(cloudletPesNumber, cloudletLength,cloudletFileSize, cloudletOutputSize);
+		ValueHolder.addVMConfiguration(req);
+		ValueHolder.addCloudletConfiguration(cloudConfig);
+		//We are persisting values to an Static Member
+		String g = new String();
+		for(int i=0; i<ValueHolder.vmConfigurations.size(); i++)
+		{
+			VMConfigurationHolder h = ValueHolder.vmConfigurations.get(i);
+			String tmp = Integer.toString(h.pe)+ " "+Integer.toString(h.Storage)+"\r\n";
+			g=g.concat(tmp);
+		}
+		
+		counter++;
+		
+		return g;
+				
+	}
+
+}

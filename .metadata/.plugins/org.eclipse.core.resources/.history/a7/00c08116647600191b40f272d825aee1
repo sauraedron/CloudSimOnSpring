@@ -1,0 +1,95 @@
+package com.abac.cloudsim;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class ConfigurationContainer {
+	public static class DataCenter
+	{
+		static int num_hosts;
+		public static int dataCenterMips; //Million Instruction Per Second of host in datacenter
+		public static int hostMemRam; // The RAM Capacity of host machine
+		public static int hostStorage; // hostStorage
+		static int dcBw; //Bandwidth of datacenter
+		public static String arch;
+		public static String os;
+		public static String vmm;
+		public static double TimeZone;
+		public static double cost;
+		public static double costPerMem;
+		public static double costPerStorage;
+		public static double costPerBw;
+		
+		public DataCenter()
+		{
+			num_hosts = 3;
+			dataCenterMips = 1005;
+			hostMemRam = 32768; // 32 GB
+			hostStorage = 8388608; //8TB
+			dcBw = 30720; //30GB
+			arch = "x86";
+			os = "Linux";
+			vmm = "Xen";
+			TimeZone = 10.0;
+			cost = 3.0; // the cost of using processing in this resource
+			costPerMem = 0.05; // the cost of using memory in this resource
+			costPerStorage = 0.001; // the cost of using storage in this resource
+			costPerBw = 0.0; // the cost of using bw in this resource
+		}
+		
+		//getters
+		/*
+		 * Note : Any DataCenter resources will be Number of hosts x  Resource for each host
+		 */
+		public static int getDataCenterMIPS()
+		{
+			return num_hosts * dataCenterMips;
+		}
+		public static int getDataCenterRam()
+		{
+			return num_hosts * hostMemRam;
+		}
+		public static int getDataCenterStorage()
+		{
+			return num_hosts * DataCenter.hostStorage;
+		}
+		public static int getDataCenterBandwidth()
+		{
+			return num_hosts * DataCenter.dcBw;
+		}
+		
+	}
+	public static class ValueHolder
+	{
+		static int num_users=1;
+		static int num_DataCenterCount=1;
+		
+        static int vmCounter=0;
+
+        static int containerCounter=0;
+		public static List<VMConfigurationHolder> vmConfigurations;
+        public static List<CloudletConfigurationHolder> cloudletConfigurations;
+        public static void addVMConfiguration(VMConfigurationHolder v)
+        {
+//            v.position=++vmCounter;
+            if(vmConfigurations==null)
+            {
+                vmConfigurations = new LinkedList<VMConfigurationHolder>();
+            }
+            vmConfigurations.add(v);
+            
+        }
+
+        public static void addCloudletConfiguration(CloudletConfigurationHolder v)
+        {
+            v.position = ++containerCounter;
+            if(cloudletConfigurations==null)
+            {
+                cloudletConfigurations = new LinkedList<CloudletConfigurationHolder>();
+            }
+            cloudletConfigurations.add(v);
+        }
+	}
+
+
+}
